@@ -106,15 +106,16 @@ $(document).ready(function() {
 			google.charts.load("current", {packages:["corechart"]});
 			google.charts.setOnLoadCallback(drawHistogramChart);
 
+			// Histograma
 			function drawHistogramChart() {
 				var frequecyTable = statistic.frequencyTable, rowData = [], hTicks = [];
 				rowData.push([
-					'Frequência absoluta', 'Ponto médio'
+					'Ponto médio', 'Frequência absoluta'
 				])
 				$.each(frequecyTable, function(i, el) {
 					rowData.push([
-						el.xi.toString(),
-						el.fi
+						el.fi.toString(),
+						el.xi
 					]);
 
 					hTicks.push(el.xi);
@@ -127,6 +128,9 @@ $(document).ready(function() {
 					legend: { position: 'none' },
 					hAxis: {
 						ticks: hTicks
+					},
+					histogram: {
+						bucketSize: 3	
 					}
 				};
 	
@@ -135,6 +139,7 @@ $(document).ready(function() {
 			}
 
 
+			// Polígonos
 			google.charts.setOnLoadCallback(drawFrequencyPolygonChart);
 
 			function drawFrequencyPolygonChart() {
@@ -180,6 +185,41 @@ $(document).ready(function() {
 				};
 		
 				var chart = new google.visualization.LineChart(document.getElementById('frequency_polygon_graph'));
+		
+				chart.draw(data, options);
+			}
+
+			// Ogiva
+			google.charts.setOnLoadCallback(drawOgivaChart);
+
+			function drawOgivaChart() {
+				var frequecyTable = statistic.frequencyTable, rowData = [];
+				rowData.push([
+					'Ponto médio', 'Frequência Acumulada'
+				]);
+
+				$.each(frequecyTable, function(i, el) {
+					rowData.push([
+						el.xi.toString(),
+						el.fac
+					]);
+				});
+
+				var data = google.visualization.arrayToDataTable(rowData);
+		
+				var options = {
+					title: 'Ogiva',
+					legend: { position: 'none' },
+					hAxis: {
+						title: 'Ponto médio'
+					},
+					vAxis: {
+						title: 'Frequência Acumulada'
+					},
+					pointSize: 5
+				};
+		
+				var chart = new google.visualization.LineChart(document.getElementById('ogiva_graph'));
 		
 				chart.draw(data, options);
 			}

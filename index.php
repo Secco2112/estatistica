@@ -52,7 +52,7 @@
 									<li class="input">
 										<input type="text" name="frequency_value">
 									</li>
-								<? } ?>
+								<?php } ?>
 							</ul>
 							<ul id="qty-column" class="form-column">
 								<span class="title">Quantidade</span>
@@ -61,7 +61,7 @@
 										<input type="text" name="frequency_qty">
 										<i class="fa fa-times"></i>
 									</li>
-								<? } ?>
+								<?php } ?>
 							</ul>
 						</div>
 						<button type="button" class="btn btn-secondary add-frequency">Adicionar frequência</button>
@@ -162,6 +162,9 @@
 							</div>
 							<div class="graph-wrapper">
 								<div id="frequency_polygon_graph"></div>
+							</div>
+							<div class="graph-wrapper">
+								<div id="ogiva_graph"></div>
 							</div>
 						</div>
 					</div>

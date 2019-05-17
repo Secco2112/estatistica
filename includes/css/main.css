@@ -1,111 +1,89 @@
 * {
-  font-family: "Ubuntu", sans-serif;
-}
+  font-family: 'Ubuntu', sans-serif; }
 
 body .main-content .content .title-wrapper {
-  margin: 25px 0;
-}
-body .main-content .content .title-wrapper h1 {
-  text-align: center;
-  color: #333333;
-}
+  margin: 25px 0; }
+  body .main-content .content .title-wrapper h1 {
+    text-align: center;
+    color: #333333; }
 body .main-content .content .tabs-wrapper {
   max-width: 630px;
-  margin: 0 auto;
-}
-body .main-content .content .tabs-wrapper > ul {
-  display: flex;
-  justify-content: space-between;
-}
-body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group textarea {
-  margin-top: 15px;
-}
-body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 15px auto 0;
-  max-width: 390px;
-}
-body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column .title {
-  text-align: center;
-  display: block;
-}
-body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column .input {
-  margin-top: 10px;
-}
-body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column .input input {
-  max-width: 170px;
-  width: 100%;
-}
-body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column#qty-column li {
-  position: relative;
-}
-body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column#qty-column li i {
-  position: absolute;
-  top: 7px;
-  left: calc(100% + 10px);
-  color: red;
-  cursor: pointer;
-}
-body .main-content .content .tabs-wrapper .frequency-wrapper form > .add-frequency {
-  font-size: 13px;
-  margin: 10px 0 0 102px;
-}
-body .main-content .content .tabs-wrapper .frequency-wrapper form > .calculate {
-  margin: 35px auto 0;
-  display: block;
-}
+  margin: 0 auto; }
+  body .main-content .content .tabs-wrapper > ul {
+    display: flex;
+    justify-content: space-between; }
+  body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group textarea {
+    margin-top: 15px; }
+  body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 15px auto 0;
+    max-width: 390px; }
+    body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+      body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column .title {
+        text-align: center;
+        display: block; }
+      body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column .input {
+        margin-top: 10px; }
+        body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column .input input {
+          max-width: 170px;
+          width: 100%; }
+      body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column#qty-column li {
+        position: relative; }
+        body .main-content .content .tabs-wrapper .frequency-wrapper form .form-group.columns .form-column#qty-column li i {
+          position: absolute;
+          top: 7px;
+          left: calc(100% + 10px);
+          color: red;
+          cursor: pointer; }
+  body .main-content .content .tabs-wrapper .frequency-wrapper form > .add-frequency {
+    font-size: 13px;
+    margin: 10px 0 0 102px; }
+  body .main-content .content .tabs-wrapper .frequency-wrapper form > .calculate {
+    margin: 35px auto 0;
+    display: block; }
 body .main-content .content .results-wrapper {
-  margin: 0 auto;
-}
-body .main-content .content .results-wrapper h3 {
-  border-top: 1px dashed #333333;
-  margin: 40px auto 0;
-  padding-top: 20px;
-  text-align: center;
-  max-width: 80%;
-}
-body .main-content .content .results-wrapper .results-tabs {
-  max-width: 85%;
-  margin: 20px auto 0;
-}
-body .main-content .content .results-wrapper .results-tabs > ul {
+  margin: 0 auto; }
+  body .main-content .content .results-wrapper h3 {
+    border-top: 1px dashed #333333;
+    margin: 40px auto 0;
+    padding-top: 20px;
+    text-align: center;
+    max-width: 80%; }
+  body .main-content .content .results-wrapper .results-tabs {
+    max-width: 85%;
+    margin: 20px auto 0; }
+    body .main-content .content .results-wrapper .results-tabs > ul {
+      display: flex;
+      justify-content: space-between; }
+    body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table thead tr th {
+      text-align: center;
+      border-right: solid 1px #ccc !important; }
+      body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table thead tr th:last-child {
+        border-right: none !important; }
+    body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td {
+      border: none !important;
+      border-right: solid 1px #ccc !important; }
+      body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:nth-child(2), body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:nth-child(3), body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:nth-child(4), body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:nth-child(5), body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:nth-child(6) {
+        text-align: right; }
+      body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:last-child {
+        border: none !important; }
+    body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tfoot tr td {
+      border-bottom: solid 1px #ccc !important;
+      border-right: solid 1px #ccc !important; }
+      body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tfoot tr td:last-child {
+        border-right: none !important; }
+    body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.trend_measures {
+      max-width: 540px;
+      margin: 0 auto; }
+
+.graphs {
   display: flex;
   justify-content: space-between;
-}
-body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table thead tr th {
-  text-align: center;
-  border-right: solid 1px #ccc !important;
-}
-body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table thead tr th:last-child {
-  border-right: none !important;
-}
-body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td {
-  border: none !important;
-  border-right: solid 1px #ccc !important;
-}
-body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:nth-child(2), body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:nth-child(3), body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:nth-child(4), body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:nth-child(5), body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:nth-child(6) {
-  text-align: right;
-}
-body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tbody tr td:last-child {
-  border: none !important;
-}
-body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tfoot tr td {
-  border-bottom: solid 1px #ccc !important;
-  border-right: solid 1px #ccc !important;
-}
-body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.frequency-table tfoot tr td:last-child {
-  border-right: none !important;
-}
-body .main-content .content .results-wrapper .results-tabs .frequency-wrapper table.trend_measures {
-  max-width: 540px;
-  margin: 0 auto;
-}
+  align-items: center; }
 
 /*# sourceMappingURL=main.css.map */
