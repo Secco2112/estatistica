@@ -214,7 +214,7 @@ class Statistic {
 	}
 
 	format(number, dp) {
-		return !isNaN(+number)? (+number).toFixed(dp || this.decimalPlaces): number;
+		return !isNaN(+number)? ((+number).toFixed(dp || this.decimalPlaces) * 1).toString(): number;
 	}
 
 	simpleArithmeticalAverage() {

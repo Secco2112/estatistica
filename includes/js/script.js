@@ -4,7 +4,7 @@
 $(document).ready(function() {
 
 	const statistic = new Statistic({
-		decimalPlaces: 1
+		decimalPlaces: 2
 	});
 
 	$(".tabs-wrapper").tabs();
@@ -98,9 +98,9 @@ $(document).ready(function() {
 			if(statistic.moda().length > 1) {
 				table_2.find("#moda td:nth-child(2)").text("Amodal");
 			} else {
-				table_2.find("#moda td:nth-child(2)").text(statistic.moda()[0]);
+				table_2.find("#moda td:nth-child(2)").text(statistic.format(statistic.moda()[0]));
 			}
-			table_2.find("#median td:nth-child(2)").text(statistic.median());
+			table_2.find("#median td:nth-child(2)").text(statistic.format(statistic.median()));
 			table_2.find("#standard_deviation td:nth-child(2)").text(statistic.format(statistic.standardDeviation()));
 			table_2.find("#sample_variance td:nth-child(2)").text(statistic.format(statistic.sampleVariance()));
 			table_2.find("#population_standard_deviation td:nth-child(2)").text(statistic.format(statistic.populationStandardDeviation()));
@@ -114,17 +114,16 @@ $(document).ready(function() {
 
 			// Histograma
 			function drawHistogramChart() {
-				var frequecyTable = statistic.frequencyTable, rowData = [], hTicks = [];
+				var frequecyTable = statistic.frequencyTable, rowData = [];
+				
 				rowData.push([
 					'Ponto médio', 'Frequência absoluta'
-				])
+				]);
+
 				$.each(frequecyTable, function(i, el) {
 					rowData.push([
-						el.fi.toString(),
-						el.xi
+						el.xi.toString(), el.fi
 					]);
-
-					hTicks.push(el.xi);
 				});
 
 				var data = google.visualization.arrayToDataTable(rowData);
@@ -133,14 +132,15 @@ $(document).ready(function() {
 					title: 'Histograma',
 					legend: { position: 'none' },
 					hAxis: {
-						ticks: hTicks
+						title: 'Ponto médio'
 					},
-					histogram: {
-						bucketSize: 3	
-					}
+					vAxis: {
+						title: 'Frequência absoluta'
+					},
+					bar: { groupWidth: '75%' },
 				};
 	
-				var chart = new google.visualization.Histogram(document.getElementById('histogram_graph'));
+				var chart = new google.visualization.ColumnChart(document.getElementById('histogram_graph'));
 				chart.draw(data, options);
 			}
 
@@ -151,7 +151,7 @@ $(document).ready(function() {
 			function drawFrequencyPolygonChart() {
 				var frequecyTable = statistic.frequencyTable, rowData = [];
 				rowData.push([
-					'Ponto médio', 'Frequência'
+					'Ponto Médio', 'Frequência absoluta'
 				]);
 
 				if(frequecyTable[0].xi - statistic.tableClassesInterval >= 0) {
@@ -185,7 +185,7 @@ $(document).ready(function() {
 						title: 'Ponto médio'
 					},
 					vAxis: {
-						title: 'Frequência'
+						title: 'Frequência absoluta'
 					},
 					pointSize: 5
 				};
@@ -201,7 +201,7 @@ $(document).ready(function() {
 			function drawOgivaChart() {
 				var frequecyTable = statistic.frequencyTable, rowData = [];
 				rowData.push([
-					'Ponto médio', 'Frequência Acumulada'
+					'Ponto médio', 'Frequência acumulada'
 				]);
 
 				$.each(frequecyTable, function(i, el) {
@@ -220,7 +220,7 @@ $(document).ready(function() {
 						title: 'Ponto médio'
 					},
 					vAxis: {
-						title: 'Frequência Acumulada'
+						title: 'Frequência acumulada'
 					},
 					pointSize: 5
 				};
