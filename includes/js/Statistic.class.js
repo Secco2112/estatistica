@@ -293,10 +293,10 @@ class Statistic {
 			}
 		}
 
-		
+		var half = parseInt(data.length) / 2 - 1;
 		if(data.length % 2 == 0) {
-			var middle1 = data[parseInt(data.length / 2) - 1],
-				middle2  = data[parseInt(data.length / 2) / 2];
+			var middle1 = data[half],
+				middle2  = data[half + 1];
 
 			return (middle1 + middle2) / 2;
 		} else {
