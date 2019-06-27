@@ -205,6 +205,9 @@ class Statistic {
 			fac_percent += fi_percent;
 			frequenciesTable[it].fac_percent = fac_percent;
 
+			var xi_fi = xi * counter_for_interval;
+			frequenciesTable[it].xi_fi = xi_fi;
+
 			it++;
 		}
 
@@ -240,14 +243,14 @@ class Statistic {
 	}
 
 	geometricAverage() {
-		var table = this.frequencyTable,
+		var table = this.parsedRawData,
 			mult_xi = 1;
 
 		$.each(table, function(i, el) {
-			mult_xi *= parseInt(el.xi);
+			mult_xi *= parseInt(el);
 		});
 
-		return Math.pow(mult_xi, 1 / this.tableClassesNumber);
+		return Math.pow(mult_xi, 1 / this.totalData);
 	}
 
 	moda() {

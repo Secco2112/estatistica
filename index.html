@@ -8,6 +8,11 @@
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="includes/css/main.css">
+	<style>
+		input[name=frequency_value], input[name=frequency_qty]{
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 	<main class="main-content">
@@ -31,7 +36,7 @@
 					<form id="form-frequencies" method="post" action="">
 						<input type="hidden" name="frequency-option" value="all">
 						<div class="form-group microphone">
-							<textarea class="form-control" rows="5" name="frequency-values">150, 151, 152, 153, 154, 155, 155, 155, 156, 156, 156, 157, 158, 158, 160, 160, 160, 160, 160, 161, 161, 161, 161, 162, 162, 163, 163, 164, 164, 164, 165, 166, 167, 168, 168, 169, 170, 170, 172, 173</textarea>
+							<textarea class="form-control" rows="5" name="frequency-values"></textarea>
 							<i class="fa fa-microphone" style="display: none;"></i>
 						</div>
 						<button type="submit" class="btn btn-primary calculate">Calcular</button>
@@ -69,7 +74,7 @@
 			</div>
 			<div class="results-wrapper" style="display: none; margin: 20px auto 60px;">
 				<h3 class="title">Resultados</h3>
-				<div class="results-tabs">
+				<div class="results-tabs" style="max-width: 75%;">
 					<ul>
 						<li>
 							<a href="#tabs-1">Tabela de distribuição de frequências</a>
@@ -87,11 +92,12 @@
 							<thead>
 								<tr>
 									<th scope="col">Classe</th>
-									<th scope="col">Frequência absoluta (Fi)</th>
-									<th scope="col">Ponto médio (Xi)</th>
-									<th scope="col">Frequência acumulada (Fac)</th>
-									<th scope="col">Frequência relativa (Fi(%))</th>
-									<th scope="col">Frequência acumulada relativa (FacR)</th>
+									<th scope="col">Fi</th>
+									<th scope="col">Xi</th>
+									<th scope="col">Fac</th>
+									<th scope="col">Fi (%)</th>
+									<th scope="col">FacR</th>
+									<th scope="col">XiFi</th>
 								</tr>
 							</thead>
 							<tbody></tbody>
@@ -102,6 +108,7 @@
 									<td align="center">-</td>
 									<td align="center">-</td>
 									<td align="right"></td>
+									<td align="center">-</td>
 									<td align="center">-</td>
 								</tr>
 							</tfoot>
@@ -130,8 +137,8 @@
 									<td align="center">Mediana</td>
 									<td></td>
 								</tr>
-								<tr id="standard_deviation">
-									<td align="center">Desvio padrão amostral</td>
+								<tr id="population_variance">
+									<td align="center">Variância populacional</td>
 									<td></td>
 								</tr>
 								<tr id="sample_variance">
@@ -142,8 +149,8 @@
 									<td align="center">Desvio padrão populacional</td>
 									<td></td>
 								</tr>
-								<tr id="population_variance">
-									<td align="center">Variância populacional</td>
+								<tr id="standard_deviation">
+									<td align="center">Desvio padrão amostral</td>
 									<td></td>
 								</tr>
 								<tr id="sample_variance_coefficient">

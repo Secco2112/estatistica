@@ -80,6 +80,7 @@ $(document).ready(function() {
 				tr += "<td>" + el.fac + "</td>";
 				tr += "<td>" + statistic.format(el.fi_percent) + "</td>";
 				tr += "<td>" + statistic.format(el.fac_percent) + "</td>";
+				tr += "<td align='right'>" + statistic.format(el.xi_fi) + "</td>";
 				tr += "</tr>";
 
 				$(".results-wrapper .frequency-table tbody").append(tr);
@@ -101,11 +102,13 @@ $(document).ready(function() {
 				table_2.find("#moda td:nth-child(2)").text(statistic.format(statistic.moda()[0]));
 			}
 			table_2.find("#median td:nth-child(2)").text(statistic.format(statistic.median()));
-			table_2.find("#standard_deviation td:nth-child(2)").text(statistic.format(statistic.standardDeviation()));
-			table_2.find("#sample_variance td:nth-child(2)").text(statistic.format(statistic.sampleVariance()));
-			table_2.find("#population_standard_deviation td:nth-child(2)").text(statistic.format(statistic.populationStandardDeviation()));
-			table_2.find("#population_variance td:nth-child(2)").text(statistic.format(statistic.populationVariance()));
-			table_2.find("#sample_variance_coefficient td:nth-child(2)").text(statistic.format(statistic.sampleVarianceCoefficient()));
+
+			table_2.find("#population_variance td:nth-child(2)").text(statistic.format(statistic.sampleVariance()));
+			table_2.find("#sample_variance td:nth-child(2)").text(statistic.format(statistic.populationStandardDeviation()));
+			table_2.find("#population_standard_deviation td:nth-child(2)").text(statistic.format(statistic.standardDeviation()));
+			table_2.find("#standard_deviation td:nth-child(2)").text(statistic.format(statistic.populationVariance()));
+			
+			table_2.find("#sample_variance_coefficient td:nth-child(2)").text(statistic.format(statistic.sampleVarianceCoefficient()) + " %");
 
 
 			// Tab 3
