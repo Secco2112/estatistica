@@ -24,6 +24,7 @@ body{
 						.form-group{
 							textarea{
 								margin-top: 15px;
+								min-height: 150px;
 							}
 							&.columns{
 								display: flex;
@@ -58,6 +59,15 @@ body{
 											}
 										}
 									}
+								}
+							}
+							&.microphone{
+								position: relative;
+								i{
+									position: absolute;
+									bottom: 15px;
+									right: 15px;
+									cursor: pointer;
 								}
 							}
 						}

@@ -39,6 +39,8 @@ $(document).ready(function() {
 	$(".calculate").on("click", function(e) {
 		e.preventDefault();
 
+		$(".results-wrapper").show();
+
 		var current_option = $(this).closest("form").find("input[name=frequency-option]").val();
 		statistic.setType(current_option);
 
@@ -93,7 +95,11 @@ $(document).ready(function() {
 			table_2.find("#simple_arithmetical_average td:nth-child(2)").text(statistic.format(statistic.simpleArithmeticalAverage()));
 			table_2.find("#weighted_arithmetical_average td:nth-child(2)").text(statistic.format(statistic.weightedArithmeticalAverage()));
 			table_2.find("#geometric_average td:nth-child(2)").text(statistic.format(statistic.geometricAverage()));
-			table_2.find("#moda td:nth-child(2)").text(statistic.moda().join(", "));
+			if(statistic.moda().length > 1) {
+				table_2.find("#moda td:nth-child(2)").text("Amodal");
+			} else {
+				table_2.find("#moda td:nth-child(2)").text(statistic.moda()[0]);
+			}
 			table_2.find("#median td:nth-child(2)").text(statistic.median());
 			table_2.find("#standard_deviation td:nth-child(2)").text(statistic.format(statistic.standardDeviation()));
 			table_2.find("#sample_variance td:nth-child(2)").text(statistic.format(statistic.sampleVariance()));
@@ -224,5 +230,92 @@ $(document).ready(function() {
 				chart.draw(data, options);
 			}
 		}
+	});
+
+
+	var final_transcript = '';
+	var recognizing = false;
+	var ignore_onend;
+	var start_timestamp;
+	$(".microphone > i").on("click", function() {
+		if (window.hasOwnProperty('webkitSpeechRecognition')) {	  
+			var voice = new webkitSpeechRecognition();
+	  
+			voice.continuous = true;
+			voice.interimResults = true;
+	  
+			voice.lang = "pt-BR";
+			voice.start();
+			
+			voice.onresult = function(event) {
+				var interim_transcript = '';
+				for (var i = event.resultIndex; i < event.results.length; ++i) {
+					if (event.results[i].isFinal) {
+						final_transcript += event.results[i][0].transcript;
+					} else {
+						interim_transcript += event.results[i][0].transcript;
+					}
+				}
+				console.log(interim_transcript);
+			};
+			
+			voice.onaudiostart = function(e) {
+				recognizing = true;
+			}
+	  
+			voice.onaudioend = function(e) {
+				recognizing = false;
+				if (ignore_onend) {
+					return;
+				}
+			}
+	  
+			// handler de erro
+			voice.onerror = function(e) {
+			  	var error;
+	  
+			  	switch (e.error) {
+					case 'no-speech':
+						error = 'Nenhuma fala foi detectada.';
+						ignore_onend = true;
+						break;
+					case 'aborted':
+						error = 'A entrada de fala foi abortada.';
+						ignore_onend = true;
+						break;
+					case 'audio-capture':
+						error = 'A captura de áudio falhou.';
+						ignore_onend = true;
+						break;
+					case 'network':
+						error = 'Comunicações de rede falharam.';
+						ignore_onend = true;
+						break;
+					case 'not-allowed':
+						error = 'Sem permissão de entrada de fala.';
+						ignore_onend = true;
+						break;
+					case 'service-not-allowed':
+						error = 'Sem permissão do serviço de fala solicitado na web.';
+						ignore_onend = true;
+						break;
+					case 'bad-grammar':
+						error = 'Erro na gramática de reconhecimento de fala.';
+						ignore_onend = true;
+						break;
+					case 'language-not-supported':
+						error = 'Idioma não suportado.';
+						ignore_onend = true;
+						break;
+					default:
+						break;
+			  }
+	  
+			  voice.stop();
+			}
+	  
+		  } else {
+			$('#form_busca > img').hide();
+		  }
 	});
 });
